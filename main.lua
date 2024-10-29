@@ -1,5 +1,6 @@
 ---@diagnostic disable: lowercase-global
 require 'player'
+require 'area'
 require 'game'
 
 function love.load()
