@@ -1,7 +1,7 @@
 ---@diagnostic disable: lowercase-global
 
-gw = 480*2
-gh = 270*2
+gw = 480*3
+gh = 270*3
 sy = 1
 sx = sy
 

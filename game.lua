@@ -1,23 +1,24 @@
-game = {}
+Game = Object:extend()
 
-function game:new()
+function Game:new()
     self.main_canvas = love.graphics.newCanvas(gw, gh)
-    player:new(gw/2, gh/2)
-    area:new()
+    Player:new(gw/2, gh/2)
+    Area:new()
     -- self.area:addGameObject('Player', gw/4, gh/4)
 end
 
-function game:update(dt)
+function Game:update(dt)
     -- Camera.smoother = Camera.smooth.damped(5)
     -- Camera:lockPosition(dt, gw/2, gh/2)
 
     -- self.area:update(dt)
 end
 
-function game:draw()
+function Game:draw()
     love.graphics.setCanvas(self.main_canvas)
     love.graphics.clear()
-        
+        Area:draw()
+        Player:draw()
     
     -- Camera:attach(0, 0, gw, gh)
     --     self.area:draw()
@@ -30,8 +31,7 @@ function game:draw()
     love.graphics.draw(self.main_canvas, 0, 0, 0, sx, sy)
     
     love.graphics.setBlendMode('alpha')
-    area:draw()
-    player:draw()
+    
 end
 
 -- function game:destroy()

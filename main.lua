@@ -1,18 +1,24 @@
 ---@diagnostic disable: lowercase-global
-require 'player'
+
+Object = require 'libraries/classic/classic'
+
+
+require 'objects'
 require 'area'
 require 'game'
+require 'UUID'
+require 'player'
 
 function love.load()
-    player:new(10, 10)
-    game:new()
+    Player:new(10, 10)
+    Game:new()
 end
 
 function love.update(dt)
-    player:update(dt)
+    Player:update(dt)
 end
 
 function love.draw()
     -- player:draw()
-    game:draw()
+    Game:draw()
 end
