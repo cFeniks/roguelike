@@ -2,48 +2,25 @@ Player = GameObjects:extend()
 
 function Player:new(x, y)
     Player.super:new(x, y)
-    self.x, self.y = x, y
+    self.speed = 3
     self.r = 0
     self.v = 0
 end
 
 function Player:update(dt)
-    if love.keyboard.isDown("d") then
-        self.x = self.x + 3
+    local left = bool_to_num(love.keyboard.isDown("a"))
+    local right = bool_to_num(love.keyboard.isDown("d"))
+    local up = bool_to_num(love.keyboard.isDown("w"))
+    local down = bool_to_num(love.keyboard.isDown("s"))
+
+    local hor = right - left
+    local ver = up - down
+
+    if hor ~= 0 and ver ~= 0 then
+        self.x, self.y = self.x + hor * self.speed * 0.7, self.y - ver * self.speed * 0.7 -- Diagonal movement
+    else
+        self.x, self.y = self.x + hor * self.speed, self.y - ver * self.speed -- Normal movement
     end
-
-    if love.keyboard.isDown("a") then
-        self.x = self.x - 3
-    end
-
-    if love.keyboard.isDown("w") then
-        self.y = self.y - 3
-
-        if love.keyboard.isDown("a") then
-            self.y = self.y + 1
-            self.x = self.x + 1
-        end
-
-        if love.keyboard.isDown("d") then
-            self.y = self.y + 1
-            self.x = self.x - 1
-        end
-    end
-
-    if love.keyboard.isDown("s") then
-        self.y = self.y + 3
-
-        if love.keyboard.isDown("a") then
-            self.y = self.y - 1
-            self.x = self.x + 1
-        end
-
-        if love.keyboard.isDown("d") then
-            self.y = self.y - 1
-            self.x = self.x - 1
-        end
-    end
-
 end
 
 function Player:draw()

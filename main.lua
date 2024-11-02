@@ -9,6 +9,10 @@ require 'game'
 require 'UUID'
 require 'player'
 
+function bool_to_num(value)
+    return value and 1 or 0
+end
+
 function love.load()
     Player:new(10, 10)
     Game:new()
